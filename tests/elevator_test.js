@@ -92,7 +92,7 @@ describe('Person', function() {
     assert.isFunction(Person);
   });
 
-  it('should instantiate an person', () => {
+  it('should instantiate a person', () => {
     assert.isObject(person);
   });
 

@@ -24,7 +24,7 @@ export class Elevator {
   }
 
   takePassengers(person) {
-    //request elevator
+    //pick up passenger
     if (person.currentFloor !== this.currentFloor) {
       this.currentFloor = person.currentFloor
       this.passengerList.push(person)
@@ -34,7 +34,6 @@ export class Elevator {
         this.targetFloors.push()
       }
   }
-
 
   goToFloor(person) {
     //go up
