@@ -6,17 +6,20 @@ export class Elevator {
     this.floorRequests = [];
     this.passengerNumber = [];
   }
+
+  reset() {
+    this.startingFloor = 0;
+    this.currentFloor = null;
+    this.targetFloors = [];
+    this.floorRequests = [];
+    this.passengerNumber = [];
+  }
 }
 
-Elevator.prototype.reset = () => {
-
-}
-
-
-Elevator.prototype.goToFloor = (person) => {
-  this.passengetNumber.push(person)
-  this.targetFloors.push()
-}
+// Elevator.prototype.goToFloor = (person) => {
+//   this.passengetNumber.push(person)
+//   this.targetFloors.push()
+// }
 
 
 //pickUpPerson

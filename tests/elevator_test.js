@@ -7,10 +7,9 @@ const { Elevator, Person } = require('../elevator')
 describe('Elevator', function() {
   const elevator = new Elevator();
 
-  // beforeEach(function() {
-  //   elevator.reset();
-  // });
-
+  beforeEach(function() {
+    elevator.reset();
+  });
 
   it('should be a function', () => {
     assert.isFunction(Elevator);
