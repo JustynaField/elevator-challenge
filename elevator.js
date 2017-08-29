@@ -1,4 +1,4 @@
-export default class Elevator {
+export class Elevator {
   constructor() {
     this.startingFloor = 0;
     this.currentFloor = null;
