@@ -23,15 +23,13 @@ export class Elevator {
   goToFloor(person) {
     //go up
     if(person.currentFloor < person.dropOffFloor) {
-      // this.elevatorStatus = 'moveup'
+      this.elevatorStatus = 'moveup'
       this.currentFloor = person.dropOffFloor
     }
     //go down
     if (person.currentFloor > this.currentFloor) {
+      this.elevatorStatus = 'movedown'
       this.currentFloor = person.dropOffFloor
-    //     this.dropOffFloor = this.curentFloor
-    //   // this.elevatorStatus = 'movedown'
-    //   // this.currentFloor--;
     }
   }
 
