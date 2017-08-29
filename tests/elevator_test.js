@@ -7,9 +7,9 @@ const { Elevator, Person } = require('../elevator')
 describe('Elevator', function() {
   const elevator = new Elevator();
 
-  // beforeEach(function() {
-  //   elevator.reset();
-  // });
+  beforeEach(function() {
+    elevator.reset();
+  });
 
   it('should be a function', () => {
     assert.isFunction(Elevator);
@@ -19,8 +19,8 @@ describe('Elevator', function() {
     assert.isObject(elevator);
   });
 
-  it.skip('should have a staringFloor set to 0 as default', () => {
-    assert.equal(elevator.startingFloor, 0);
+  it('should start on floor 0', () => {
+    assert.equal(elevator.startingFloor, 0)
   });
 
   it('should start with no currentFloor selected', () => {
@@ -36,11 +36,11 @@ describe('Elevator', function() {
   });
 
   it('should have an array of passengers', () => {
-    assert.typeOf(elevator.passengerNumber, 'array');
+    assert.typeOf(elevator.passengerList, 'array');
   });
 
   it('should start with no passengers', () => {
-    assert.deepEqual(elevator.passengerNumber, []);
+    assert.deepEqual(elevator.passengerList, []);
   });
 
   it('should start with 0 floors traversed', () => {
@@ -51,23 +51,39 @@ describe('Elevator', function() {
     assert.equal(elevator.totalStops, 0)
   })
 
+  it('should reset the values', () => {
+    let mockElevator = { currentFloor: 5, dropOffFloor: 3 };
+    elevator.reset(mockElevator);
+
+    assert.equal(elevator.currentFloor, 0);
+    assert.equal(elevator.dropOffFloor, 0);
+  });
+
   it('should bring a rider to a floor above their current floor', () => {
     let mockUser = { name: "Brittany", currentFloor: 2, dropOffFloor: 5 };
     elevator.goToFloor(mockUser);
 
     assert.equal(elevator.currentFloor, 5);
+    assert.equal(elevator.totalStops, 1);
+    assert.equal(elevator.floorsTraversed, 1);
   });
-
 
   it('should bring a rider to a floor below their current floor', () => {
     let mockUser = { name: "Brittany", currentFloor: 8, dropOffFloor: 3 };
     elevator.goToFloor(mockUser);
 
     assert.equal(elevator.currentFloor, 3);
+    assert.equal(elevator.totalStops, 1);
+    assert.equal(elevator.floorsTraversed, 1);
   });
 
-});
+  it.skip('should be able to pick up a passenger', () => {
+    let mockUser = { name: "Brittany", currentFloor: 8, dropOffFloor: 3 };
+    elevator.takePassengers(mockUser);
 
+    assert.equal(elevator.passengerList.length, 1)
+  })
+});
 
 describe('Person', function() {
   const person = new Person();

@@ -1,55 +1,61 @@
 export class Elevator {
   constructor() {
-    this.startingFloor = 0;
-    this.currentFloor = 0;
-    this.targetFloors = [];
-    this.floorRequests = [];
-    this.passengerNumber = [];
+    this.startingFloor = 0
+    this.currentFloor = 0,
+    this.targetFloors = [],
+    this.floorRequests = [],
+    this.passengerList = [],
     this.elevatorStatus = 'idle' || 'moveup' || 'movedown',
     this.floorsTraversed = 0,
     this.totalStops = 0,
     this.dropOffFloor = 0
   }
 
-  // reset() {
-  //
-  // }
+  reset() {
+    this.startingFloor = 0
+    this.currentFloor = 0,
+    this.targetFloors = [],
+    this.floorRequests = [],
+    this.passengerList = [],
+    this.elevatorStatus = 'idle' || 'moveup' || 'movedown',
+    this.floorsTraversed = 0,
+    this.totalStops = 0,
+    this.dropOffFloor = 0
+  }
 
-  // goToFloor(person) {
-  //   this.passengerNumber.push(person)
-  //   this.targetFloors.push()
-  // }
+  takePassengers(person) {
+    //request elevator
+    if (person.currentFloor !== this.currentFloor) {
+      this.currentFloor = person.currentFloor
+      this.passengerList.push(person)
+    }
+      //multiple passengers
+      if (passengerList.length > 1) {
+        this.targetFloors.push()
+      }
+  }
+
 
   goToFloor(person) {
     //go up
     if(person.currentFloor < person.dropOffFloor) {
       this.elevatorStatus = 'moveup'
       this.currentFloor = person.dropOffFloor
+      this.totalStops++,
+      this.floorsTraversed++
     }
     //go down
-    if (person.currentFloor > this.currentFloor) {
+    if (person.currentFloor > person.dropOffFloor) {
       this.elevatorStatus = 'movedown'
       this.currentFloor = person.dropOffFloor
+      this.totalStops++
+      this.floorsTraversed++
     }
   }
-
 }
 
-//traverse = move back and forth
-
-// Elevator.prototype.goToFloor = (person) => {
-//   this.passengetNumber.push(person)
-//   this.targetFloors.push()
-// }
-
-
-//pickUpPerson
-//on their current floor
-//drop off on reqiested floor
-
-
 export class Person {
-  constructor (name, currentFloor, requestedFloor) {
+  constructor (name) {
     this.name = name,
     this.currentFloor = 0,
     this.dropOffFloor = 0
