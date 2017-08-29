@@ -7,9 +7,9 @@ const { Elevator, Person } = require('../elevator')
 describe('Elevator', function() {
   const elevator = new Elevator();
 
-  beforeEach(function() {
-    elevator.reset();
-  });
+  // beforeEach(function() {
+  //   elevator.reset();
+  // });
 
   it('should be a function', () => {
     assert.isFunction(Elevator);
@@ -19,12 +19,12 @@ describe('Elevator', function() {
     assert.isObject(elevator);
   });
 
-  it('should have a staringFloor set to 0 as default', () => {
+  it.skip('should have a staringFloor set to 0 as default', () => {
     assert.equal(elevator.startingFloor, 0);
   });
 
   it('should start with no currentFloor selected', () => {
-    assert.equal(elevator.currentFloor, null);
+    assert.equal(elevator.currentFloor, 0);
   });
 
   it('should have an array of floor requests', () => {
@@ -43,9 +43,15 @@ describe('Elevator', function() {
     assert.deepEqual(elevator.passengerNumber, []);
   });
 
+  it('should start with 0 floors traversed', () => {
+    assert.equal(elevator.floorsTraversed, 0)
+  })
 
+  it('should start with 0 total stops', () => {
+    assert.equal(elevator.totalStops, 0)
+  })
 
-  it.skip('should bring a rider to a floor above their current floor', () => {
+  it('should bring a rider to a floor above their current floor', () => {
     let mockUser = { name: "Brittany", currentFloor: 2, dropOffFloor: 5 };
     elevator.goToFloor(mockUser);
 
@@ -53,7 +59,7 @@ describe('Elevator', function() {
   });
 
 
-  it.skip('should bring a rider to a floor below their current floor', () => {
+  it('should bring a rider to a floor below their current floor', () => {
     let mockUser = { name: "Brittany", currentFloor: 8, dropOffFloor: 3 };
     elevator.goToFloor(mockUser);
 
@@ -64,7 +70,7 @@ describe('Elevator', function() {
 
 
 describe('Person', function() {
-  let person = new Person();
+  const person = new Person();
 
   it('should be a function', () => {
     assert.isFunction(Person);
@@ -74,14 +80,12 @@ describe('Person', function() {
     assert.isObject(person);
   });
 
-
-
   it('should start with no current floor selected', () => {
-    assert.equal(person.currentFloor, null);
+    assert.equal(person.currentFloor, 0);
   });
 
   it('should start with no dropoff floor selected', () => {
-    assert.equal(person.dropOffFloor, null);
+    assert.equal(person.dropOffFloor, 0);
   });
 
 });
